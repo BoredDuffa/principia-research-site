@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Principia Research & Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A1628;
+  --white:#FFFFFF;
+  --off:#F8F7F5;
+  --gold:#B8922A;
+  --rule:#E2DDD6;
+  --muted:#6B7280;
+  --dim:#9CA3AF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--navy);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;padding:0 5rem;height:60px}
+.nav-mark{font-family:'EB Garamond',serif;font-size:17px;color:var(--navy);text-decoration:none;letter-spacing:0.02em}
+.nav-mark span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.15s}
+.nav-links a:hover{color:var(--navy)}
+.nav-contact{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:color 0.15s}
+.nav-contact:hover{color:var(--navy)}
+
+.hero{padding:160px 5rem 120px;border-bottom:1px solid var(--rule)}
+.hero-label{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero h1{font-family:'EB Garamond',serif;font-size:clamp(48px,6.5vw,82px);font-weight:400;color:var(--navy);line-height:1.05;max-width:820px;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.hero h1 em{font-style:italic;color:var(--muted)}
+.hero-body{font-size:16px;font-weight:300;color:var(--muted);max-width:480px;line-height:1.9;margin-bottom:3rem}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);text-decoration:none;padding-bottom:2px;border-bottom:1px solid var(--navy);transition:color 0.15s,border-color 0.15s}
+.hero-cta:hover{color:var(--gold);border-color:var(--gold)}
+
+section{padding:100px 5rem}
+
+.s-label{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.s-title{font-family:'EB Garamond',serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;color:var(--navy);line-height:1.15;letter-spacing:-0.01em;margin-bottom:1.75rem;max-width:600px}
+.s-body{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;max-width:580px;margin-bottom:1.25rem}
+
+.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:3.5rem;align-items:start}
+.pull{font-family:'EB Garamond',serif;font-size:21px;font-style:italic;color:var(--navy);line-height:1.55;border-top:1px solid var(--rule);padding-top:1.5rem;margin-top:2rem}
+
+.cap-section{background:var(--navy);border-top:1px solid #1a2d47;border-bottom:1px solid #1a2d47}
+.cap-section .s-title{color:var(--white)}
+.cap-section .s-body{color:rgba(255,255,255,0.5)}
+.cap-section .s-label{color:#C9A84C}
+.cap-list{margin-top:4rem;border-top:1px solid rgba(255,255,255,0.08)}
+.cap-row{display:grid;grid-template-columns:64px 1fr 2fr;gap:48px;padding:2.25rem 0;border-bottom:1px solid rgba(255,255,255,0.08);align-items:start}
+.cap-num{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,0.2);padding-top:3px}
+.cap-name{font-size:13px;font-weight:500;color:var(--white);letter-spacing:0.02em;padding-top:3px}
+.cap-desc{font-size:14px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.85}
+
+.sectors-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3.5rem;border-top:1px solid var(--rule)}
+.sector-item{padding:2.5rem 0;border-bottom:1px solid var(--rule);padding-right:3rem}
+.sector-item:nth-child(even){padding-left:3rem;padding-right:0;border-left:1px solid var(--rule)}
+.sector-name{font-family:'EB Garamond',serif;font-size:20px;font-weight:400;color:var(--navy);margin-bottom:0.75rem}
+.sector-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.85}
+
+.team-section{background:var(--off);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3.5rem;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.team-card{padding:2rem 1.75rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.team-init{font-size:12px;font-weight:500;letter-spacing:0.06em;color:var(--gold);margin-bottom:1.25rem}
+.team-name{font-family:'EB Garamond',serif;font-size:17px;font-weight:400;color:var(--navy);margin-bottom:4px}
+.team-role{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem}
+.team-bio{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75}
+.team-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--rule)}
+.team-grid-3 .team-card{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.advisory-section{background:var(--white)}
+.advisory-label{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);margin-bottom:2rem}
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.5rem;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.adv-card{padding:2rem 1.75rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.adv-name{font-family:'EB Garamond',serif;font-size:17px;color:var(--navy);margin-bottom:4px}
+.adv-role{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem}
+.adv-bio{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75}
+
+.contact-section{border-top:1px solid var(--rule);background:var(--navy);padding:120px 5rem}
+.contact-section .s-label{color:#C9A84C}
+.contact-section .s-title{color:var(--white);max-width:100%}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:3.5rem;align-items:end}
+.contact-note{font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9}
+.contact-detail{margin-top:2rem}
+.contact-detail a{display:block;font-size:15px;font-weight:300;color:rgba(255,255,255,0.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1rem;margin-bottom:1rem;transition:color 0.15s}
+.contact-detail a:hover{color:var(--white)}
+.contact-detail span{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:6px}
+
+footer{background:var(--navy);padding:2rem 5rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+.foot-mark{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,0.5)}
+.foot-note{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+
+@media(max-width:860px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero,section{padding-left:1.5rem;padding-right:1.5rem}
+  .hero{padding-top:100px;padding-bottom:80px}
+  .about-cols{grid-template-columns:1fr;gap:2.5rem}
+  .cap-row{grid-template-columns:40px 1fr;gap:24px}
+  .cap-desc{display:none}
+  .sectors-grid{grid-template-columns:1fr}
+  .sector-item:nth-child(even){padding-left:0;border-left:none}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .team-grid-3{grid-template-columns:1fr 1fr}
+  .adv-grid{grid-template-columns:1fr}
+  .contact-inner{grid-template-columns:1fr}
+  .contact-section{padding:80px 1.5rem}
+  footer{padding:1.5rem;flex-direction:column;gap:0.75rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-mark">Principia <span>R&A</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a href="#contact" class="nav-contact">Engage</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Principia Research &amp; Analytics</div>
+  <h1>Rigorous analysis.<br>Proprietary infrastructure.<br><em>Original research.</em></h1>
+  <p class="hero-body">Advanced analytical research, machine learning systems, and bespoke algorithmic frameworks for corporate and public sector clients across Ireland and international markets.</p>
+  <a href="#about" class="hero-cta">Learn more &nbsp;&rarr;</a>
+</div>
+
+<section id="about">
+  <div class="s-label">About</div>
+  <h2 class="s-title">Research infrastructure built for the questions your existing data cannot answer</h2>
+  <div class="about-cols">
+    <div>
+      <p class="s-body">Principia Research & Analytics is the analytical intelligence division of Principia Capital. We deliver the rigorous research output traditionally associated with major research institutions — applied to the specific requirements of corporate and public sector clients who require depth, precision, and genuine analytical independence.</p>
+      <p class="s-body">Where large research houses deploy standardised methodologies at scale, we deploy concentrated expertise with proprietary frameworks designed entirely to the brief. Every engagement is original work.</p>
+      <div class="pull">"We do not produce templated reports. We build research infrastructure."</div>
+    </div>
+    <div>
+      <p class="s-body">Our work spans machine learning research, bespoke algorithmic development, macroeconomic and sectoral analysis, quantitative financial modelling, and policy-facing research. We serve clients across the corporate sector — asset managers, financial institutions, operating businesses — and the public sector, including government-facing projects requiring legislative intelligence and economic modelling grounded in live data.</p>
+      <p class="s-body">The team carries formal credentials from UCD, LSE, and HEC Paris, reinforced by an advisory board with decades across PwC, Invesco, PIMCO, and central bank-regulated environments.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cap-section" id="capabilities">
+  <div class="s-label">Capabilities</div>
+  <h2 class="s-title">Six research disciplines. No generalists.</h2>
+  <p class="s-body">Each engagement draws on the full depth of our quantitative and research infrastructure, constructed around the client's specific analytical requirement.</p>
+
+  <div class="cap-list">
+    <div class="cap-row">
+      <div class="cap-num">01</div>
+      <div class="cap-name">Machine Learning Research</div>
+      <div class="cap-desc">We design and build original ML systems — Bayesian models, Riemannian manifold analysis, Kolmogorov complexity frameworks. Our work produces tools that operate in production environments, not academic proofs of concept. Every model is stress-tested, documented, and built for integration.</div>
+    </div>
+    <div class="cap-row">
+      <div class="cap-num">02</div>
+      <div class="cap-name">Proprietary Algorithm Development</div>
+      <div class="cap-desc">We develop bespoke algorithmic frameworks for client-specific problems: scoring systems, predictive engines, classification models, and automated decision architecture. Algorithms are delivered with full documentation, benchmarking, and integration support.</div>
+    </div>
+    <div class="cap-row">
+      <div class="cap-num">03</div>
+      <div class="cap-name">Quantitative Financial Modelling</div>
+      <div class="cap-desc">From advanced valuation including option pricing and econometric scenario analysis to portfolio construction and risk modelling — our quantitative output meets the standards of institutional asset management. We work to investment committee-grade precision.</div>
+    </div>
+    <div class="cap-row">
+      <div class="cap-num">04</div>
+      <div class="cap-name">Macro &amp; Sectoral Research</div>
+      <div class="cap-desc">Primary macroeconomic research covering Irish and international markets, sectoral deep-dives, and structural analysis. Independently sourced, rigorously evidenced, and delivered to a standard comparable with major research institutions.</div>
+    </div>
+    <div class="cap-row">
+      <div class="cap-num">05</div>
+      <div class="cap-name">Legislative &amp; Policy Intelligence</div>
+      <div class="cap-desc">Our proprietary macro engine monitors the Houses of the Oireachtas and European regulatory frameworks in real time — tracking policy shifts, identifying sectoral implications, and translating legislative change into precise, actionable intelligence.</div>
+    </div>
+    <div class="cap-row">
+      <div class="cap-num">06</div>
+      <div class="cap-name">Data Infrastructure &amp; Scoring Systems</div>
+      <div class="cap-desc">Scalable quantitative infrastructure: continuous data ingestion pipelines, proprietary scoring models operating at scale, and analytical systems designed for enterprise integration. AI-native architecture built to operate under production load.</div>
+    </div>
+  </div>
+</section>
+
+<section id="sectors">
+  <div class="s-label">Sectors</div>
+  <h2 class="s-title">Corporate and public sector. Both to the same standard.</h2>
+  <div class="sectors-grid">
+    <div class="sector-item">
+      <div class="sector-name">Corporate</div>
+      <p class="sector-desc">Asset managers, investment firms, financial institutions, and operating companies requiring analytical depth beyond standard advisory. Engagements typically involve proprietary modelling, competitive intelligence, or quantitative research suitable for investment committee consumption.</p>
+    </div>
+    <div class="sector-item">
+      <div class="sector-name">Public Sector &amp; Government</div>
+      <p class="sector-desc">Public bodies, government agencies, and policy-facing organisations requiring rigorous analytical research, economic modelling, and legislative intelligence. Structured to withstand scrutiny — independently sourced, clearly evidenced, and built to the standards of public sector outputs.</p>
+    </div>
+    <div class="sector-item">
+      <div class="sector-name">Financial Institutions</div>
+      <p class="sector-desc">Banks, lenders, and regulated entities working across complex asset classes. Quantitative finance capability including option pricing, fixed income analytics, econometric scenario modelling, and risk frameworks built to institutional specification.</p>
+    </div>
+    <div class="sector-item">
+      <div class="sector-name">Technology &amp; AI-Driven Business</div>
+      <p class="sector-desc">For businesses integrating AI into operations — the underlying machine learning architecture, data scoring infrastructure, and algorithmic development that separates genuine capability from surface-level automation. Systems that function at scale.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team-section" id="team">
+  <div class="s-label">The team</div>
+  <h2 class="s-title">Deep expertise across every discipline we practise.</h2>
+  <p class="s-body">Every member holds first-class academic credentials and operates at the frontier of their domain.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-init">D.B.</div>
+      <div class="team-name">Dillon Burke</div>
+      <div class="team-role">Founding & Managing Partner</div>
+      <p class="team-bio">BComm, UCD. Advanced studies in private equity and LBO optimisation at HEC Paris and Advanced Corporate Finance at LSE, both with First Class Honours. Leads all research strategy, client relationships, and analytical infrastructure across Principia Research & Analytics.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-init">Y.B.</div>
+      <div class="team-name">Yash Burman</div>
+      <div class="team-role">Chief Data & Quantitative Analyst</div>
+      <p class="team-bio">First Class Honours MSc Finance, UCD Smurfit. First Class Honours Bachelor's, University of Delhi, 98th percentile. Financial and econometric modeller applying Black-76 option pricing to renewable energy portfolios at Flo-Gas. Leads quantitative modelling and data architecture.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-init">R.R.</div>
+      <div class="team-name">Robert Rafanelli</div>
+      <div class="team-role">Head of Macro Research</div>
+      <p class="team-bio">First Class Honours BSc Business, UCD Lochlann Quinn. First Class Honours MSc Finance, Smurfit. Previously at Quadrant Asset Management, Atlanta, authoring US and Irish macroeconomic reports. NASA Space Apps Challenge winner. Oxford Model UN Best Small Delegation.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-init">B.F.</div>
+      <div class="team-name">Benjamin Falkenburg</div>
+      <div class="team-role">Head of Machine Learning</div>
+      <p class="team-bio">Mathematics and Statistics, UCD. Member of the Royal Statistical Society. Top 0.1% globally in Kaggle modelling competitions. Research spans Bayesian Game Theory, Riemannian manifold analysis, and Kolmogorov complexity. Leads all machine learning development and algorithm construction.</p>
+    </div>
+  </div>
+
+  <div class="team-grid-3">
+    <div class="team-card">
+      <div class="team-init">T.D.</div>
+      <div class="team-name">Tom Dowling</div>
+      <div class="team-role">Tax Advisor — PwC</div>
+      <p class="team-bio">Chartered Tax Adviser at PwC. First Class Honours Bachelor of Civil Law, UCD. Tax advisory to corporate clients and investment funds — acquisition structuring, exit planning, compliance, and management incentive design.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-init">C.S.</div>
+      <div class="team-name">Cian Shaughnessy</div>
+      <div class="team-role">Legal Counsel — Turner Solicitors</div>
+      <p class="team-bio">Practising solicitor, Turner Solicitors Dublin. Civil litigation, real property, probate, and commercial transactions. Legal due diligence, contract negotiation, and corporate legal support.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-init">D.M.</div>
+      <div class="team-name">Dara Murphy</div>
+      <div class="team-role">Quantum Physics Advisor</div>
+      <p class="team-bio">PhD candidate in Theoretical Quantum Physics, UCD. Specialises in the thermodynamics of information and energy transfer in quantum networks. Contributes quantum computing insights and rigorous mathematical simulation frameworks to long-term quantitative strategy.</p>
+    </div>
+  </div>
+</section>
+
+<section class="advisory-section">
+  <div class="advisory-label">Advisory Board</div>
+  <h2 class="s-title">Senior advisors across tax, investment, and transaction structuring.</h2>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-name">Barry Murphy</div>
+      <div class="adv-role">Senior Tax & Legal Advisor</div>
+      <p class="adv-bio">Partner in Legal and Tax practice at PwC London for over two decades (2003–2024). Complex transaction structuring, private equity fund formation, and tax-efficient structures. Now advising independently on transaction structuring, carried interest design, and cross-border tax planning.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-name">Liam McKnight</div>
+      <div class="adv-role">Investment Strategy Advisor</div>
+      <p class="adv-bio">Senior portfolio manager and quant lead, Invesco Fixed Income ETF and Indexed Strategies, London. Previously PIMCO and RenaissanceRe. CFA charterholder. First Class Honours MSc Quantitative Finance, UCD Smurfit. Portfolio construction, quantitative modelling, and investment frameworks.</p>
+    </div>
+    <div class="adv-card">
+      <div class="adv-name">Ian Higgins</div>
+      <div class="adv-role">Transaction & Special Situations</div>
+      <p class="adv-bio">One of Ireland's youngest central bank-regulated CEOs. Led a €50 million private equity raise alongside €200 million debt financing. Recovered over €3 billion in debt. Structured €100 million-plus in deals across Ireland, Europe, and emerging markets.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="s-label">Engage</div>
+  <h2 class="s-title">Commission a research engagement.</h2>
+  <div class="contact-inner">
+    <p class="contact-note">Whether you require a discrete analytical project, an ongoing research relationship, or a bespoke algorithmic framework — we welcome the conversation. All enquiries are treated in strict confidence.</p>
+    <div class="contact-detail">
+      <span>Email</span>
+      <a href="mailto:research@principiacapital.ie">research@principiacapital.ie</a>
+      <span>Location</span>
+      <a href="#">Dublin, Ireland</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-mark">Principia Research &amp; Analytics</div>
+  <div class="foot-note">A division of Principia Capital &nbsp;&middot;&nbsp; Dublin &nbsp;&middot;&nbsp; &copy; 2025</div>
+</footer>
+
+</body>
+</html>
